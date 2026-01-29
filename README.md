@@ -28,6 +28,8 @@ This project applies SQL to query and analyze three years of historical data wit
 ## 2. Data Structure
 
 The database contains **259,527 rows** and **15 columns**, capturing detailed transactional and customer-related information used for analytical purposes.
+<img width="945" height="108" alt="image" src="https://github.com/user-attachments/assets/0d53981c-00fe-4c38-8a3d-45d4e31bd2b6" />
+
 
 ---
 
@@ -38,16 +40,44 @@ During the 2022–2024 period, the business experienced significant fluctuations
 ### Revenue Performance
 - In 2023, revenue grew strongly, reaching approximately 59.3 billion VND, representing a growth of around 23.5% compared to 2022.
 - In 2024, revenue declined to approximately 41.8 billion VND, corresponding to a decrease of about 29.5% year-over-year.
+```sql
+WITH CTE_1 AS (
+SELECT DATEPART(YEAR,[Thời gian tạo đơn]) AS Year, SUM([Thành tiền]) AS Revenue FROM Sales
+GROUP BY DATEPART(YEAR,[Thời gian tạo đơn])
+)
+SELECT *,(Revenue - Revenue_Previous) * 100.0 / Revenue_Previous AS Growth_Percentage FROM
+(SELECT *,LAG(Revenue) OVER(ORDER BY Year) AS Revenue_Previous FROM CTE_1) AS Year_1
+```
+<img width="410" height="77" alt="image" src="https://github.com/user-attachments/assets/a1068d78-9b8c-4164-a0c3-7c6bd93beda1" />
+
+
 
 This pattern indicates a phase of rapid but unsustainable growth, followed by a notable decline in the most recent year.
 
 ### Sales Quantity
 - Sales volume increased from 31,579 units in 2022 to 43,462 units in 2023, indicating expanding market demand.
 - In 2024, sales volume dropped to 34,545 units, reflecting a slowdown in purchasing power or changes in sales strategy.
+```sql
+SELECT DATEPART(YEAR,[Thời gian tạo đơn]) AS Year, SUM([Thành tiền]) AS Revenue, COUNT(DISTINCT([Mã Đơn Hàng])) AS Quantity FROM Sales
+GROUP BY DATEPART(YEAR,[Thời gian tạo đơn])
+ORDER BY YEAR ASC
+```
+<img width="227" height="72" alt="image" src="https://github.com/user-attachments/assets/8e2539ed-47fe-4b98-b790-33f820dd7c96" />
+
 
 ### Average Order Value (AOV)
 - AOV was relatively high in 2022 (approximately 152,008 VND), but declined significantly in 2023 (−10.26%) and continued to decrease in 2024 (−11.33%).
 - Despite revenue growth in 2023, the declining AOV indicates that growth was driven primarily by higher order volume rather than higher value per order.
+```sql
+WITH CTE_1 AS (
+SELECT DATEPART(YEAR,[Thời gian tạo đơn]) AS Year,SUM([Thành tiền])/COUNT(DISTINCT([Mã đơn hàng])) AS AOV FROM Sales
+GROUP BY DATEPART(YEAR,[Thời gian tạo đơn])
+)
+SELECT *,(AOV - AOV_Previous) * 100.0 / AOV_Previous AS Growth_Percentage FROM 
+(SELECT *,LAG(AOV) OVER(ORDER BY Year) AS AOV_Previous FROM CTE_1) AS Year_1
+```
+<img width="456" height="77" alt="image" src="https://github.com/user-attachments/assets/2e567e22-9bc8-4140-81d6-378dacc82b8a" />
+
 
 This suggests potential factors such as increased discounting, a shift toward price-sensitive customers, or a higher proportion of lower-priced products.
 
