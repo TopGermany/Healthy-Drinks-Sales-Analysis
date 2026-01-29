@@ -1,204 +1,179 @@
-# Why the YoY Fluctuation ?
-1. BUSINESS CONTEXT
-Business Model
+# Why Did Revenue Grow Rapidly and Then Decline in a Healthy Drinks Retail Chain in Da Nang?
 
-A healthy drinks & detox retail chain operating in Da Nang, Vietnam, specializing in detox juices and nutritious beverages.
+**Healthy Drinks & Detox Retail Chain – Da Nang**
 
-After three years of operation, the business has built a stable customer base consisting of:
+---
 
-Local residents with a healthy lifestyle
+## 1. Business Context
 
-Tourists visiting a major tourism city
+### Business Model  
+Healthy Drinks & Detox retail chain operating in Da Nang.
 
-Due to the nature of the market, sales data shows strong seasonality and clear changes in customer behavior over time.
+### Company Overview  
+The business specializes in detox juices and nutritional beverages, targeting health-conscious local residents and tourists in Da Nang. After three years of operation and expansion, the company has established a relatively stable customer base. Given Da Nang’s characteristics as a major tourist city, sales data exhibits strong seasonality and reflects noticeable changes in consumer behavior across different years.
 
-Business Problem
+### Current Business Challenge  
+After reaching the three-year milestone, the company has accumulated a large volume of historical data that has not yet been fully utilized. Management requires in-depth analytical reports to reassess growth performance, understand differences across customer segments, and optimize an increasingly complex product menu that has expanded through multiple product launches.
 
-Although the company owns a large amount of historical sales data, the data has not been fully leveraged to support strategic decision-making.
+### Project Objectives  
+This project applies SQL to query and analyze three years of historical data with the following goals:
 
-Management needs:
+- Evaluate long-term revenue trends and assess the impact of seasonality, particularly the tourism season in Da Nang.
+- Optimize the product portfolio by identifying long-performing hero products and underperforming items that should be replaced.
+- Gain deeper customer insights by classifying customers based on loyalty levels to design appropriate retention strategies.
+- Support strategic decision-making by providing data-driven insights for business expansion or operational adjustments.
 
-A comprehensive review of growth performance
+---
 
-A deeper understanding of customer segments
+## 2. Data Structure
 
-Insights to optimize an increasingly complex product menu
+The database contains **259,527 rows** and **15 columns**, capturing detailed transactional and customer-related information used for analytical purposes.
 
-2. PROJECT OBJECTIVES
+---
 
-This project uses SQL to analyze historical sales data from 2022 to 2024 in order to:
+## 3. Business Performance Overview
 
-Evaluate long-term revenue trends
-Analyze revenue by year, month, and quarter to identify seasonality effects.
+During the 2022–2024 period, the business experienced significant fluctuations in revenue, sales volume, and Average Order Value (AOV), reflecting changes in both business scale and customer behavior.
 
-Optimize product portfolio
-Identify core products that consistently perform well and products that underperform.
+### Revenue Performance
+- In 2023, revenue grew strongly, reaching approximately 59.3 billion VND, representing a growth of around 23.5% compared to 2022.
+- In 2024, revenue declined to approximately 41.8 billion VND, corresponding to a decrease of about 29.5% year-over-year.
 
-Understand customer behavior
-Segment customers using RFM analysis to assess customer quality and loyalty.
+This pattern indicates a phase of rapid but unsustainable growth, followed by a notable decline in the most recent year.
 
-Support business decisions
-Provide data-driven insights for growth strategy adjustments.
+### Sales Quantity
+- Sales volume increased from 31,579 units in 2022 to 43,462 units in 2023, indicating expanding market demand.
+- In 2024, sales volume dropped to 34,545 units, reflecting a slowdown in purchasing power or changes in sales strategy.
 
-3. DATA STRUCTURE
+### Average Order Value (AOV)
+- AOV was relatively high in 2022 (approximately 152,008 VND), but declined significantly in 2023 (−10.26%) and continued to decrease in 2024 (−11.33%).
+- Despite revenue growth in 2023, the declining AOV indicates that growth was driven primarily by higher order volume rather than higher value per order.
 
-The sales database includes:
+This suggests potential factors such as increased discounting, a shift toward price-sensitive customers, or a higher proportion of lower-priced products.
 
-259,527 rows
+---
 
-15 columns
+## Monthly Revenue Performance
 
-Full transaction history from 2022–2024
+### 2022 to 2023 Growth Phase
+- Most months in 2023 recorded higher revenue compared to 2022.
+- Strong growth was observed in January, February, and March, indicating positive momentum at the beginning of the year.
+- Revenue peaks in August, October, and December reflect seasonality and year-end demand.
+- Revenue growth was accompanied by higher sales volume, suggesting scale-driven expansion.
 
-Main data categories:
+Overall, 2023 represents a period of comprehensive growth supported by favorable market conditions and effective sales strategies.
 
-Transaction time
+### 2023 to 2024 Decline Phase
+- The majority of months in 2024 showed revenue declines compared to 2023.
+- Significant drops occurred in January, February, and March, indicating an early loss of growth momentum.
+- Mid-year months (April to July) continued to weaken, suggesting a prolonged downturn rather than a temporary fluctuation.
+- Although some months showed relative stability, the recovery was insufficient to offset the overall decline.
 
-Order information
+This pattern points to structural challenges, potentially driven by reduced market demand, increased competition, or misaligned pricing and product strategies.
 
-Customer information
+---
 
-Product and revenue details
+## Quarterly Revenue Performance
 
-4. BUSINESS PERFORMANCE OVERVIEW
-4.1 Revenue Performance
+### 2022 to 2023
+- All quarters in 2023 recorded revenue growth compared to 2022.
+- Q4 2023 achieved the highest revenue, confirming the importance of year-end seasonality.
+- Balanced growth across quarters indicates stable operational performance throughout the year.
 
-Revenue increased significantly in 2023, reaching approximately 59.3 billion VND (+23.5% YoY).
+### 2023 to 2024
+- All four quarters in 2024 experienced revenue declines compared to 2023.
+- Q1 and Q4 showed the most severe drops.
+- The consistent decline across all quarters suggests a long-term downward trend rather than short-term volatility.
 
-In 2024, revenue dropped to around 41.8 billion VND (−29.5% YoY).
+---
 
-This indicates rapid but unsustainable growth, followed by a clear downturn in the most recent year.
+## Revenue Decline Analysis – Customer & Order Value Perspective
 
-Suggested illustration:
+### Customer Structure Analysis (RFM Segmentation)
 
-SQL query result table: total revenue by year
+RFM analysis reveals significant shifts in customer quality and behavior, particularly in 2024:
 
-4.2 Sales Quantity
+- **VIP Customers**  
+  Increased significantly from 2022 to 2023, then declined in 2024, indicating ineffective retention of the highest-value customers.
 
-Sales volume increased from 31,579 units in 2022 to 43,462 units in 2023.
+- **Loyal Customers**  
+  Peaked in 2023 and dropped sharply in 2024. The loss of this segment has a direct and substantial impact on revenue due to high purchase frequency and AOV.
 
-In 2024, volume declined to 34,545 units.
+- **Regular and Potential Loyalists**  
+  Showed slow growth or slight decline in 2024, indicating weak conversion into loyal segments.
 
-This suggests weakening demand or changes in sales strategy.
+- **At-Risk and Lost Customers**  
+  Increased sharply from 2022 to 2023 and remained high in 2024, reflecting customer churn and reduced purchase frequency.
 
-Suggested illustration:
+Overall, revenue decline is driven not only by lower sales volume but primarily by deterioration in customer quality, especially the loss of loyal and VIP customers.
 
-SQL query result table: total quantity by year
+### Continuous AOV Decline
+- AOV decreased consistently:
+  - Approximately 10% from 2022 to 2023
+  - Approximately 11% from 2023 to 2024
 
-4.3 Average Order Value (AOV)
+This indicates reduced spending per order or a shift toward lower-priced products. Even during the 2023 growth phase, revenue growth was volume-driven rather than value-driven, signaling unsustainable growth.
 
-AOV was highest in 2022 (~152,008 VND).
+---
 
-Decreased by ~10.26% in 2023.
+## Linking RFM and AOV – Root Causes of Revenue Decline
 
-Continued to decline by ~11.33% in 2024.
+Combining customer segmentation and order value analysis reveals:
+- Declining high-value customer segments
+- Growing at-risk and lost customer segments
+- Persistent decline in AOV
 
-Even during revenue growth in 2023, growth was driven mainly by order volume rather than order value.
+These factors collectively lead to declining monthly and quarterly revenue and weak recovery even during peak seasons.
 
-This reflects:
+---
 
-Heavy discounting strategies
+## Business Conclusion
 
-Increased price-sensitive customers
+The revenue decline in 2024 is not merely a seasonal or short-term market issue. It reflects deeper structural challenges, including ineffective customer retention, decreasing customer value, and a growth strategy overly focused on order volume rather than order quality.
 
-Higher share of low-value products
+---
 
-Suggested illustration:
+## Business Strategy & Data-Driven Recommendations
 
-SQL query result table: AOV by year
+### Product & Cross-Selling Strategy (Market Basket Analysis)
 
-5. TIME-BASED ANALYSIS
-5.1 Monthly Revenue Analysis
+Market basket analysis identifies frequently co-purchased product pairs such as:
+- Celery powder and ginger tea
+- Celery powder and dried orange slices or peach tea
+- Brown rice tea and ginger tea or fruit tea
+- Orange–lemongrass–cinnamon tea and ginger tea
 
-From 2022 to 2023:
+These patterns reflect health-oriented combo purchasing behavior.
 
-Most months showed strong growth
+Recommended actions include creating fixed product bundles, applying bundle pricing, and implementing cross-sell suggestions at checkout or POS systems. Priority should be given to Regular, Potential Loyalist, and At-Risk customer segments to increase AOV and stimulate repeat purchases.
 
-Particularly at the beginning and end of the year
+### Seasonal & Monthly AOV Strategy
 
-From 2023 to 2024:
+Higher AOV is concentrated in June, July, August, and November, while lower AOV occurs in February, March, and April.
 
-Revenue declined in most months
+During high-AOV months, businesses should push premium upselling and limited-edition products. During low-AOV months, promotional bundles, vouchers, and volume-based discounts can help stabilize revenue and cash flow.
 
-The decline started early and persisted throughout the year
+### Operational & Staffing Strategy by Time Slot
 
-This suggests structural challenges rather than short-term seasonality.
+Evening shifts (18:00–23:00) generate the highest order volume and total revenue. Morning and afternoon shifts show stable performance with relatively high AOV, while off-peak hours contribute minimally.
 
-Suggested illustration:
+Operational optimization should include increased staffing, inventory, and customer service support during evening hours, along with time-based promotions such as flash sales and evening livestream selling.
 
-SQL query result table: revenue by month and year
+### RFM-Based Customer Strategy
 
-5.2 Quarterly Revenue Analysis
+| Customer Segment | Recommended Strategy |
+|------------------|---------------------|
+| VIP              | Exclusive offers, premium bundles, early access |
+| Loyal            | Loyalty points, subscriptions, scheduled promotions |
+| Potential Loyalist | Cross-sell bundles and return incentives |
+| Regular          | Light cross-selling and related product recommendations |
+| At Risk          | Time-limited discounts and value bundles |
+| Lost Customers   | Win-back campaigns via email or SMS |
 
-All quarters grew in 2023 compared to 2022
+The primary objective is to increase Customer Lifetime Value rather than focusing solely on order volume.
 
-All quarters declined in 2024, especially Q1 and Q4
+---
 
-This confirms a long-term downward trend.
+## Strategic Summary
 
-Suggested illustration:
-
-SQL query result table: revenue by quarter
-
-6. CUSTOMER ANALYSIS – RFM SEGMENTATION
-
-RFM analysis reveals significant changes in customer quality:
-
-VIP and Loyal customers increased in 2023 but declined sharply in 2024.
-
-At Risk and Lost customers increased and remained high.
-
-Conversion from Potential Loyalists to Loyal customers was weak.
-
-Key insight:
-Revenue decline is mainly driven by the loss of high-value customers, not just fewer orders.
-
-Suggested illustration:
-
-SQL result table: RFM customer segmentation
-
-7. ROOT CAUSE ANALYSIS – RFM & AOV
-
-By combining customer and order perspectives:
-
-High-value customers declined
-
-Risky and lost customers increased
-
-AOV continuously decreased
-
-These factors together led to:
-
-Revenue decline by month and quarter
-
-Weak recovery even during peak seasons
-
-8. BUSINESS CONCLUSION
-
-The revenue decline in 2024 reflects:
-
-Ineffective customer retention
-
-Decreasing value per customer
-
-A growth strategy focused on quantity over quality
-
-9. DATA-DRIVEN RECOMMENDATIONS
-
-Focus on retaining VIP and Loyal customers
-
-Increase AOV through bundling and cross-selling
-
-Optimize strategies based on seasonality and time periods
-
-Launch win-back campaigns for At Risk and Lost customers
-
-10. SKILLS DEMONSTRATED
-
-SQL (Aggregation, Window Functions, Time-based Analysis)
-
-RFM Segmentation
-
-Revenue & Business Analysis
-
-Data-driven Decision Making
+Revenue decline in 2024 is primarily driven by declining AOV, loss of loyal customers, and underutilized cross-selling and timing strategies. Integrating Market Basket Analysis, Time-Based Analysis, and RFM Segmentation enables a data-driven growth strategy focused on improving order quality and long-term customer value.
